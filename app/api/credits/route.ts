@@ -1,12 +1,22 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { sunoAPIClient } from '@/lib/sunoapi-client';
-import type { CreditsResponse, SunoAPIError } from '@/types/sunoapi';
+import { rateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    // Rate limiting: 30 requests per minute
+    const rateLimitResponse = await rateLimit(request, {
+      interval: 60 * 1000, // 1 minute
+      uniqueTokenPerInterval: 30, // 30 credit checks per minute
+    });
+    
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
+
     // Check if user is authenticated
     const session = await auth();
     

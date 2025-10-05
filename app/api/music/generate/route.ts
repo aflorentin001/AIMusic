@@ -1,12 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { auth } from '@/auth';
 import { sunoAPIClient } from '@/lib/sunoapi-client';
+import { rateLimit } from '@/lib/rate-limit';
 import type { GenerationRequest, GenerationResponse, SunoAPIError } from '@/types/sunoapi';
 
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
   try {
+    // Rate limiting: 5 requests per minute
+    const rateLimitResponse = await rateLimit(request, {
+      interval: 60 * 1000, // 1 minute
+      uniqueTokenPerInterval: 5, // 5 music generations per minute
+    });
+    
+    if (rateLimitResponse) {
+      return rateLimitResponse;
+    }
+
     // Check if user is authenticated
     const session = await auth();
     
