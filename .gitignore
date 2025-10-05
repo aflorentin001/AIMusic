@@ -41,3 +41,13 @@ yarn-error.log*
 next-env.d.ts
 
 /lib/generated/prisma
+
+# database files
+*.db
+*.sqlite
+*.sqlite3
+prisma/*.db
+prisma/*.db-journal
+
+# text files with potentially sensitive content
+*.txt
