@@ -36,11 +36,11 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Twitter, href: '#', label: 'Twitter' },
-  { icon: Facebook, href: '#', label: 'Facebook' },
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Twitter, href: 'https://twitter.com/aimusicstudio', label: 'Twitter' },
+  { icon: Facebook, href: 'https://facebook.com/aimusicstudio', label: 'Facebook' },
+  { icon: Instagram, href: 'https://instagram.com/aimusicstudio', label: 'Instagram' },
+  { icon: Linkedin, href: 'https://linkedin.com/company/aimusicstudio', label: 'LinkedIn' },
+  { icon: Youtube, href: 'https://youtube.com/@aimusicstudio', label: 'YouTube' },
 ];
 
 export default function Footer() {
@@ -148,6 +148,8 @@ export default function Footer() {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label={social.label}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
