@@ -25,6 +25,7 @@ export default function GenerateMusic() {
   const [trackTitle, setTrackTitle] = useState('')
   const [customLyrics, setCustomLyrics] = useState('')
   const [voiceType, setVoiceType] = useState('auto')
+  const [makeInstrumental, setMakeInstrumental] = useState(false)
   const [isGenerating, setIsGenerating] = useState(false)
   const [isPlaying, setIsPlaying] = useState(false)
   const [currentTime, setCurrentTime] = useState(0)
@@ -72,7 +73,7 @@ export default function GenerateMusic() {
       // Prepare request body for Suno API
       const requestBody: any = {
         mv: 'chirp-v3-5', // Model version
-        make_instrumental: !customLyrics && !description.toLowerCase().includes('lyrics'),
+        make_instrumental: makeInstrumental, // Use the checkbox value
       }
 
       // Use custom mode if advanced options are enabled
@@ -760,6 +761,18 @@ export default function GenerateMusic() {
                     </div>
                   </div>
 
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <div className="advanced-toggle" onClick={() => setMakeInstrumental(!makeInstrumental)}>
+                      <div className={`toggle-switch ${makeInstrumental ? 'active' : ''}`}>
+                        <div className={`toggle-knob ${makeInstrumental ? 'active' : ''}`}></div>
+                      </div>
+                      <span style={{ fontWeight: '500', color: '#374151' }}>Instrumental Only (No Vocals)</span>
+                    </div>
+                    <p style={{ fontSize: '0.875rem', color: '#6b7280', marginTop: '0.5rem', marginLeft: '3.5rem' }}>
+                      Generate music without lyrics or vocals
+                    </p>
+                  </div>
+
                   <div>
                     <label className="form-label">Custom Lyrics (Optional)</label>
                     <textarea
@@ -768,7 +781,13 @@ export default function GenerateMusic() {
                       value={customLyrics}
                       onChange={(e) => setCustomLyrics(e.target.value)}
                       style={{ minHeight: '100px' }}
+                      disabled={makeInstrumental}
                     />
+                    {makeInstrumental && (
+                      <p style={{ fontSize: '0.875rem', color: '#9ca3af', marginTop: '0.5rem' }}>
+                        Lyrics are disabled when instrumental mode is on
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
