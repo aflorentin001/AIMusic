@@ -226,13 +226,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-400 text-sm">© 2024 AI Music Studio. All rights reserved.</p>
-          <div className="flex gap-6 text-sm">
-            <a href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy</a>
-            <a href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
-            <a href="/cookies" className="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
+          {/* Bottom Bar */}
+          <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-gray-400 text-sm">© 2024 AI Music Studio. All rights reserved.</p>
+            <div className="flex gap-6 text-sm">
+              <a href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy</a>
+              <a href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
+              <a href="/cookies" className="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
+            </div>
           </div>
         </div>
       </div>
