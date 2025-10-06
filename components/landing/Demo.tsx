@@ -3,7 +3,10 @@
 import { motion } from 'framer-motion';
 import { Play, Pause, Music, Sparkles } from 'lucide-react';
 import { useState, useRef } from 'react';
-import Link from 'next/link';
+
+interface DemoProps {
+  onSignInClick?: () => void;
+}
 
 const sampleTracks = [
   {
@@ -29,7 +32,7 @@ const sampleTracks = [
   },
 ];
 
-export default function Demo() {
+export default function Demo({ onSignInClick }: DemoProps = {}) {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
 
@@ -188,12 +191,13 @@ export default function Demo() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center flex flex-col items-center w-full max-w-4xl"
           >
-            <Link href="/signup">
-              <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-medium rounded-lg hover:bg-blue-700 transition-colors">
-                <Sparkles className="w-5 h-5" />
-                Try It Yourself - Free
-              </button>
-            </Link>
+            <button 
+              onClick={onSignInClick}
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+            >
+              <Sparkles className="w-5 h-5" />
+              Try It Yourself - Free
+            </button>
             <p className="text-sm text-gray-600 mt-6">
               No credit card required • Start creating in seconds
             </p>

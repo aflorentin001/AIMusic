@@ -1054,7 +1054,7 @@ export default function Home() {
       </section>
 
       {/* Demo Section with Working Audio */}
-      <Demo />
+      <Demo onSignInClick={() => setIsSignInOpen(true)} />
 
       {/* Pricing Section */}
       <section id="pricing" className="pricing">
