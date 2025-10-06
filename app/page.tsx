@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import SignInModal from '../components/auth/SignInModal';
 import Demo from '../components/landing/Demo';
+import Footer from '../components/landing/Footer';
 
 export default function Home() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -1227,92 +1228,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer>
-        <div className="container">
-          <div className="footer-newsletter">
-            <h3>Get weekly insights, new features, and exclusive tips delivered to your inbox. Join 25,000+ creators in our community.</h3>
-            <div className="footer-newsletter-form">
-              <input type="email" placeholder="Enter your email" className="newsletter-input"/>
-              <button className="newsletter-btn">Subscribe →</button>
-            </div>
-            <p className="newsletter-privacy">No spam, unsubscribe at any time. Read our <a href="#">Privacy Policy</a></p>
-          </div>
-
-          <div className="footer-content">
-            <div className="footer-brand-section">
-              <div className="footer-brand">🎵 AI Music Studio</div>
-              <p className="footer-description">Create professional music with AI in seconds. Trusted by 50,000+ creators worldwide for content creation, podcasts, and commercial projects.</p>
-              <div className="footer-contact">
-                <p>✉️ hello@aimusicstudio.com</p>
-                <p>📞 +1 (555) 123-4567</p>
-                <p>📍 San Francisco, CA</p>
-              </div>
-            </div>
-            <div className="footer-column">
-              <h4>Product</h4>
-              <ul className="footer-links">
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#">Demo</a></li>
-                <li><a href="#">API</a></li>
-                <li><a href="#">Mobile App</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Company</h4>
-              <ul className="footer-links">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Careers</a></li>
-                <li><a href="#">Press Kit</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Resources</h4>
-              <ul className="footer-links">
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#">Community</a></li>
-                <li><a href="#">Tutorials</a></li>
-                <li><a href="#">System Status</a></li>
-                <li><a href="#">Changelog</a></li>
-              </ul>
-            </div>
-            <div className="footer-column">
-              <h4>Legal</h4>
-              <ul className="footer-links">
-                <li><a href="#">Privacy Policy</a></li>
-                <li><a href="#">Terms of Service</a></li>
-                <li><a href="#">Cookie Policy</a></li>
-                <li><a href="#">GDPR</a></li>
-                <li><a href="#">Licensing</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer-social-section">
-            <p>Follow us:</p>
-            <div className="social-links">
-              <a href="#" className="social-link" title="X (Twitter)">𝕏</a>
-              <a href="#" className="social-link" title="Facebook">f</a>
-              <a href="#" className="social-link" title="Instagram">📷</a>
-              <a href="#" className="social-link" title="YouTube">▶</a>
-              <a href="#" className="social-link" title="LinkedIn">in</a>
-              <a href="#" className="social-link" title="TikTok">♪</a>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>© 2024 AI Music Studio. All rights reserved.</p>
-            <div className="footer-badges">
-              <span className="badge-item">🟢 99.9% Uptime</span>
-              <span className="badge-item">🔒 Secure & Encrypted</span>
-              <span className="badge-item">✓ Privacy Compliant</span>
-            </div>
-          </div>
-        </div>
-      </footer>
+      {/* Footer with Working Links */}
+      <Footer />
     </>
   );
 }
