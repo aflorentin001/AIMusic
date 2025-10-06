@@ -191,14 +191,22 @@ export default function Demo({ onSignInClick }: DemoProps = {}) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center flex flex-col items-center w-full max-w-4xl"
           >
-            <button 
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
               onClick={onSignInClick}
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-medium rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+              className="inline-flex items-center justify-center gap-2 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-blue-500/50"
+              style={{
+                padding: '1rem 2rem',
+                minWidth: '240px',
+                background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+              }}
+              aria-label="Try AI Music Studio for free"
             >
-              <Sparkles className="w-5 h-5" />
+              <Sparkles className="w-5 h-5" aria-hidden="true" />
               Try It Yourself - Free
-            </button>
-            <p className="text-sm text-gray-600 mt-6">
+            </motion.button>
+            <p className="text-sm text-gray-600" style={{ marginTop: '1.5rem' }}>
               No credit card required • Start creating in seconds
             </p>
           </motion.div>
