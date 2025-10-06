@@ -1,32 +1,37 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, Twitter, Facebook, Instagram, Linkedin, Youtube, Mail } from 'lucide-react';
+import { Music2, Twitter, Facebook, Instagram, Linkedin, Youtube, Mail, Check } from 'lucide-react';
+import { useState } from 'react';
 
 const footerLinks = {
   product: [
     { name: 'Features', href: '#features' },
     { name: 'Pricing', href: '#pricing' },
-    { name: 'Demo', href: '#demo' },
-    { name: 'API', href: '#' },
+    { name: 'Demo', href: '#samples' },
+    { name: 'API', href: '/api-docs' },
+    { name: 'Mobile App', href: '/mobile-app' },
   ],
   company: [
-    { name: 'About Us', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Blog', href: '#' },
-    { name: 'Press Kit', href: '#' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Press Kit', href: '/press' },
+    { name: 'Contact', href: 'mailto:hello@aimusicstudio.com' },
   ],
   resources: [
-    { name: 'Documentation', href: '#' },
-    { name: 'Tutorials', href: '#' },
-    { name: 'Community', href: '#' },
-    { name: 'Support', href: '#' },
+    { name: 'Help Center', href: '/help' },
+    { name: 'Tutorials', href: '/tutorials' },
+    { name: 'Community', href: '/blog' },
+    { name: 'System Status', href: '/status' },
+    { name: 'Changelog', href: '/changelog' },
   ],
   legal: [
-    { name: 'Privacy Policy', href: '#' },
-    { name: 'Terms of Service', href: '#' },
-    { name: 'Cookie Policy', href: '#' },
-    { name: 'Licensing', href: '#' },
+    { name: 'Privacy Policy', href: '/privacy' },
+    { name: 'Terms of Service', href: '/terms' },
+    { name: 'Cookie Policy', href: '/cookies' },
+    { name: 'GDPR', href: '/gdpr' },
+    { name: 'Licensing', href: '/licensing' },
   ],
 };
 
@@ -39,6 +44,19 @@ const socialLinks = [
 ];
 
 export default function Footer() {
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email && email.includes('@')) {
+      setIsSubscribed(true);
+      setEmail('');
+      // Reset after 3 seconds
+      setTimeout(() => setIsSubscribed(false), 3000);
+    }
+  };
+
   return (
     <footer className="border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #e8cec7, #ffd5c2, #ffddc0)' }}>
       {/* Newsletter Section */}
@@ -57,20 +75,52 @@ export default function Footer() {
             <p className="text-gray-600 mb-8" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)' }}>
               Get the latest updates, tips, and exclusive offers delivered to your inbox
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xl mx-auto">
+            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xl mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
                 className="flex-grow rounded-lg bg-white border-2 border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 style={{ paddingLeft: '1.25rem', paddingRight: '1.25rem', paddingTop: '0.875rem', paddingBottom: '0.875rem', fontSize: '1rem' }}
               />
-              <button className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors whitespace-nowrap shadow-md hover:shadow-lg"
-                style={{ paddingLeft: '1.5rem', paddingRight: '1.5rem', paddingTop: '0.875rem', paddingBottom: '0.875rem', fontSize: '1rem' }}
+              <motion.button
+                type="submit"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center justify-center gap-2 text-white font-semibold rounded-lg transition-colors whitespace-nowrap shadow-md hover:shadow-lg"
+                style={{ 
+                  paddingLeft: '1.5rem', 
+                  paddingRight: '1.5rem', 
+                  paddingTop: '0.875rem', 
+                  paddingBottom: '0.875rem', 
+                  fontSize: '1rem',
+                  background: isSubscribed ? '#10b981' : '#3b82f6',
+                }}
               >
-                <Mail className="w-5 h-5" />
-                Subscribe
-              </button>
-            </div>
+                {isSubscribed ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    Subscribed!
+                  </>
+                ) : (
+                  <>
+                    <Mail className="w-5 h-5" />
+                    Subscribe
+                  </>
+                )}
+              </motion.button>
+            </form>
+            {isSubscribed && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-600 font-medium mt-4"
+              >
+                ✅ Thanks for subscribing! Check your inbox for confirmation.
+              </motion.p>
+            )}
           </motion.div>
         </div>
       </div>
