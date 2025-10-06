@@ -103,9 +103,13 @@ export default function GenerateMusic() {
       })
 
       if (!response.ok) {
-        const errorData = await response.json()
-        console.error('API error response:', errorData)
-        throw new Error(errorData.message || 'Failed to generate music')
+        const errorData = await response.json().catch(() => ({}))
+        console.error('API error response:', {
+          status: response.status,
+          statusText: response.statusText,
+          errorData
+        })
+        throw new Error(errorData.message || `Failed to generate music (${response.status})`)
       }
 
       const data = await response.json()
@@ -158,7 +162,19 @@ export default function GenerateMusic() {
       await refreshCredits()
     } catch (error: any) {
       console.error('Generation error:', error)
-      alert(error.message || 'Failed to generate music. Please try again.')
+      
+      // Provide more helpful error messages
+      let errorMessage = error.message || 'Failed to generate music. Please try again.'
+      
+      if (errorMessage.includes('timed out')) {
+        errorMessage += '\n\n💡 Tip: SunoAPI is experiencing high demand. Try again in a few minutes. Your credits were not deducted.'
+      } else if (errorMessage.includes('rate limit')) {
+        errorMessage += '\n\n💡 Tip: You\'ve reached the rate limit. Please wait a minute before trying again.'
+      } else if (errorMessage.includes('Insufficient')) {
+        errorMessage += '\n\n💡 Tip: You need more credits to generate music. Visit the Credits page to purchase more.'
+      }
+      
+      alert(errorMessage)
     } finally {
       setIsGenerating(false)
       setIsPlaying(false)
