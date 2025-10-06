@@ -32,25 +32,33 @@ export default function Demo() {
   const [playingIndex, setPlayingIndex] = useState<number | null>(null);
   const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
 
-  const togglePlay = (index: number) => {
+  const togglePlay = async (index: number) => {
     const audio = audioRefs.current[index];
-    if (!audio) return;
+    if (!audio) {
+      console.error('Audio element not found for index:', index);
+      return;
+    }
 
-    // Pause all other tracks
-    audioRefs.current.forEach((a, i) => {
-      if (a && i !== index) {
-        a.pause();
-        a.currentTime = 0;
+    try {
+      // Pause all other tracks
+      audioRefs.current.forEach((a, i) => {
+        if (a && i !== index) {
+          a.pause();
+          a.currentTime = 0;
+        }
+      });
+
+      // Toggle current track
+      if (playingIndex === index) {
+        audio.pause();
+        setPlayingIndex(null);
+      } else {
+        await audio.play();
+        setPlayingIndex(index);
       }
-    });
-
-    // Toggle current track
-    if (playingIndex === index) {
-      audio.pause();
-      setPlayingIndex(null);
-    } else {
-      audio.play();
-      setPlayingIndex(index);
+    } catch (error) {
+      console.error('Error playing audio:', error);
+      alert('Unable to play audio. Please check your browser settings.');
     }
   };
 
