@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, CheckCircle, Activity, Server, Database, Zap } from 'lucide-react';
-import Link from 'next/link';
+import { CheckCircle, Activity, Server, Zap } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 
 const systems = [
   { name: 'API', status: 'operational', uptime: '99.99%' },
@@ -32,21 +32,26 @@ const incidents = [
 
 export default function StatusPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto">
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
+
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -133,8 +138,9 @@ export default function StatusPage() {
               <p className="text-gray-600 text-center py-8">No incidents in the last 90 days 🎉</p>
             )}
           </div>
-        </div>
-      </section>
-    </div>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }

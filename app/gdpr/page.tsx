@@ -1,24 +1,30 @@
 'use client';
 
-import { Music2, Shield, Download, Trash2, Eye, Lock } from 'lucide-react';
-import Link from 'next/link';
+import { Shield, Download, Trash2, Eye, Lock } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 
 export default function GDPRPage() {
   return (
-    <div className="min-h-screen bg-white">
-      <header className="border-b bg-white sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
+
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
         <div className="flex items-center gap-3 mb-6">
           <Shield className="w-10 h-10 text-blue-600" />
           <h1 className="text-4xl font-bold">GDPR Compliance</h1>
@@ -130,7 +136,9 @@ export default function GDPRPage() {
             </p>
           </section>
         </div>
+          </div>
+        </main>
       </div>
-    </div>
+    </>
   );
 }

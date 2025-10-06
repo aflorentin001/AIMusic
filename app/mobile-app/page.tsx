@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, Apple, Smartphone, Star, Download } from 'lucide-react';
-import Link from 'next/link';
+import { Apple, Smartphone, Star, Download, Music2 } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 import { useEffect } from 'react';
 
 export default function MobileAppPage() {
@@ -21,21 +21,27 @@ export default function MobileAppPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-600 via-purple-600 to-pink-600 text-white">
-      <header className="border-b border-white/20 backdrop-blur-md">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2 text-white">
-            <Music2 className="w-8 h-8" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-white hover:text-blue-100 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
+
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem',
+            textAlign: 'center'
+          }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -106,8 +112,9 @@ export default function MobileAppPage() {
               Redirecting to your device's app store in 3 seconds...
             </p>
           </motion.div>
-        </div>
-      </section>
-    </div>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }

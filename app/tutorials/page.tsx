@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, Play, BookOpen, Video, FileText } from 'lucide-react';
-import Link from 'next/link';
+import { Play, BookOpen, Video, FileText, Music2 } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 
 const tutorials = [
   {
@@ -51,38 +51,34 @@ const tutorials = [
 
 export default function TutorialsPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl font-bold mb-6 text-center"
-          >
-            Tutorials & Guides
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-600 text-center mb-16"
-          >
-            Learn how to create amazing music with AI
-          </motion.p>
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem', color: '#111827', textAlign: 'center' }}>
+              Tutorials & Guides
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: '#6b7280', textAlign: 'center', marginBottom: '3rem' }}>
+              Learn how to create amazing music with AI
+            </p>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
             {tutorials.map((tutorial, index) => {
               const Icon = tutorial.icon;
               return (
@@ -110,9 +106,10 @@ export default function TutorialsPage() {
                 </motion.div>
               );
             })}
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }
