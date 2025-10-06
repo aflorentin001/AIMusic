@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, MapPin, DollarSign, Clock, Briefcase } from 'lucide-react';
+import { MapPin, DollarSign, Clock, Briefcase } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 import Link from 'next/link';
 
 const jobOpenings = [
@@ -129,56 +130,47 @@ const jobOpenings = [
 
 export default function CareersPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      {/* Hero */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
-            Join Our Team
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-600 mb-8"
-          >
-            Help us revolutionize music creation with AI. We're hiring talented people across engineering, product, and design.
-          </motion.p>
-          <div className="flex justify-center gap-8 text-lg">
-            <div className="flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold">{jobOpenings.length} Open Positions</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-blue-600" />
-              <span className="font-semibold">Remote-Friendly</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
 
-      {/* Benefits */}
-      <section className="py-16 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Join Us?</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem', color: '#111827', textAlign: 'center' }}>
+              Join Our Team
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: '#6b7280', textAlign: 'center', marginBottom: '2rem' }}>
+              Help us revolutionize music creation with AI. We're hiring talented people across engineering, product, and design.
+            </p>
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.125rem', fontWeight: 600 }}>
+                <Briefcase style={{ width: '1.25rem', height: '1.25rem', color: '#3b82f6' }} />
+                <span>{jobOpenings.length} Open Positions</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '1.125rem', fontWeight: 600 }}>
+                <MapPin style={{ width: '1.25rem', height: '1.25rem', color: '#3b82f6' }} />
+                <span>Remote-Friendly</span>
+              </div>
+            </div>
+
+            {/* Benefits */}
+            <div style={{ marginBottom: '3rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Why Join Us?</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
             {[
               { title: '💰 Competitive Salary', description: 'Top-of-market compensation with equity options' },
               { title: '🏥 Health Benefits', description: 'Comprehensive medical, dental, and vision coverage' },
@@ -199,15 +191,13 @@ export default function CareersPage() {
                 <p className="text-gray-600">{benefit.description}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Job Listings */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Open Positions</h2>
-          <div className="space-y-4">
+            {/* Job Listings */}
+            <div style={{ marginBottom: '3rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Open Positions</h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {jobOpenings.map((job, index) => (
               <motion.div
                 key={index}
@@ -246,25 +236,11 @@ export default function CareersPage() {
                 </div>
               </motion.div>
             ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-20 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Don't See Your Role?</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            We're always looking for talented people. Send us your resume at careers@aimusicstudio.com
-          </p>
-          <a 
-            href="mailto:careers@aimusicstudio.com"
-            className="inline-block px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all"
-          >
-            Get in Touch
-          </a>
-        </div>
-      </section>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }

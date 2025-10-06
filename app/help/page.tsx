@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, ChevronDown, Search, HelpCircle, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { ChevronDown, Search, HelpCircle, Mail } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 import { useState } from 'react';
 
 const faqs = [
@@ -103,57 +103,59 @@ export default function HelpPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      {/* Hero */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="mb-8"
-          >
-            <HelpCircle className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Help Center</h1>
-            <p className="text-xl text-gray-600">
-              Find answers to common questions about AI Music Studio
-            </p>
-          </motion.div>
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
 
-          {/* Search Bar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="relative max-w-2xl mx-auto"
-          >
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Search for help..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-200 focus:border-blue-500 focus:outline-none text-lg"
-            />
-          </motion.div>
-        </div>
-      </section>
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
+            <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+              <HelpCircle style={{ width: '4rem', height: '4rem', color: '#3b82f6', margin: '0 auto 1rem' }} />
+              <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem', color: '#111827' }}>Help Center</h1>
+              <p style={{ fontSize: '1.25rem', color: '#6b7280', marginBottom: '2rem' }}>
+                Find answers to common questions about AI Music Studio
+              </p>
 
-      {/* FAQs */}
-      <section className="py-12 px-6 pb-20">
-        <div className="max-w-4xl mx-auto space-y-8">
+              {/* Search Bar */}
+              <div style={{ position: 'relative', maxWidth: '600px', margin: '0 auto' }}>
+                <Search style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)', width: '1.25rem', height: '1.25rem', color: '#9ca3af' }} />
+                <input
+                  type="text"
+                  placeholder="Search for help..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{
+                    width: '100%',
+                    paddingLeft: '3rem',
+                    paddingRight: '1rem',
+                    paddingTop: '1rem',
+                    paddingBottom: '1rem',
+                    borderRadius: '0.75rem',
+                    border: '2px solid #e5e7eb',
+                    fontSize: '1rem',
+                    outline: 'none'
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* FAQs */}
+            <div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
           {faqs.map((category, catIndex) => (
             <motion.div
               key={catIndex}
@@ -200,25 +202,37 @@ export default function HelpPage() {
               </div>
             </motion.div>
           ))}
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Contact Support */}
-      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Still Need Help?</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            Our support team is here to help you succeed
-          </p>
-          <a
-            href="mailto:support@aimusicstudio.com"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all"
-          >
-            <Mail className="w-5 h-5" />
-            Contact Support
-          </a>
-        </div>
-      </section>
-    </div>
+            {/* Contact Support */}
+            <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem', background: 'linear-gradient(135deg, #3b82f6, #9333ea)', borderRadius: '1rem', color: 'white' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>Still Need Help?</h2>
+              <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'rgba(255,255,255,0.9)' }}>
+                Our support team is here to help you succeed
+              </p>
+              <a
+                href="mailto:support@aimusicstudio.com"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '1rem 2rem',
+                  background: 'white',
+                  color: '#3b82f6',
+                  fontWeight: 600,
+                  borderRadius: '0.75rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                }}
+              >
+                <Mail style={{ width: '1.25rem', height: '1.25rem' }} />
+                Contact Support
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }

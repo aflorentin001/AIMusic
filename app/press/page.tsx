@@ -1,8 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, Award, Download, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { Award, Download, Mail } from 'lucide-react';
+import PublicHeader from '@/components/PublicHeader';
 
 const accolades = [
   { title: 'Best AI Music Tool 2024', organization: 'TechCrunch', year: '2024' },
@@ -15,44 +15,36 @@ const accolades = [
 
 export default function PressPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      {/* Hero */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-6"
-          >
-            Press Kit
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-600"
-          >
-            Media resources, company information, and brand assets
-          </motion.p>
-        </div>
-      </section>
+      <div style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', minHeight: '100vh' }}>
+        <PublicHeader />
 
-      {/* Company Overview */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto bg-white rounded-2xl p-8 shadow-lg">
+        <main style={{ maxWidth: '80rem', margin: '0 auto', padding: '2rem 1.5rem' }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
+            <h1 style={{ fontSize: '2.5rem', fontWeight: 700, marginBottom: '1rem', color: '#111827', textAlign: 'center' }}>
+              Press Kit
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: '#6b7280', textAlign: 'center', marginBottom: '3rem' }}>
+              Media resources, company information, and brand assets
+            </p>
+
+            {/* Company Overview */}
+            <div style={{ marginBottom: '3rem' }}>
+              <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem' }}>
           <h2 className="text-3xl font-bold mb-6">Company Overview</h2>
           <div className="space-y-4 text-gray-600 leading-relaxed">
             <p>
@@ -68,14 +60,13 @@ export default function PressPage() {
               <strong className="text-gray-900">Funding:</strong> $15M Series A
             </p>
           </div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Accolades */}
-      <section className="py-12 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Awards & Recognition</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Accolades */}
+            <div style={{ marginBottom: '3rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Awards & Recognition</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1.5rem' }}>
             {accolades.map((accolade, index) => (
               <motion.div
                 key={index}
@@ -91,29 +82,25 @@ export default function PressPage() {
                 <p className="text-sm text-gray-500 mt-1">{accolade.year}</p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Press Coverage */}
-      <section className="py-12 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Featured In</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center justify-items-center opacity-60">
+            {/* Press Coverage */}
+            <div style={{ marginBottom: '3rem', padding: '2rem', background: '#f9fafb', borderRadius: '1rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Featured In</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem', textAlign: 'center', opacity: 0.6 }}>
             {['TechCrunch', 'Forbes', 'The Verge', 'Wired', 'Fast Company', 'Billboard', 'Pitchfork', 'Rolling Stone'].map((outlet, index) => (
               <div key={index} className="text-2xl font-bold text-gray-400">
                 {outlet}
               </div>
             ))}
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Brand Assets */}
-      <section className="py-12 px-6">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-12">Brand Assets</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+            {/* Brand Assets */}
+            <div style={{ marginBottom: '3rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Brand Assets</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
             <div className="bg-white rounded-xl p-6 shadow-md">
               <h3 className="font-bold text-lg mb-4">Logo Package</h3>
               <p className="text-gray-600 mb-4">High-resolution logos in various formats (PNG, SVG, EPS)</p>
@@ -130,26 +117,37 @@ export default function PressPage() {
                 Download Guidelines
               </button>
             </div>
-          </div>
-        </div>
-      </section>
+              </div>
+            </div>
 
-      {/* Contact */}
-      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-4">Media Inquiries</h2>
-          <p className="text-xl mb-8 text-blue-100">
-            For press inquiries, interviews, or media requests, please contact our PR team
-          </p>
-          <a
-            href="mailto:press@aimusicstudio.com"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:shadow-xl transition-all"
-          >
-            <Mail className="w-5 h-5" />
-            press@aimusicstudio.com
-          </a>
-        </div>
-      </section>
-    </div>
+            {/* Contact */}
+            <div style={{ textAlign: 'center', marginTop: '3rem', padding: '2rem', background: 'linear-gradient(135deg, #3b82f6, #9333ea)', borderRadius: '1rem', color: 'white' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>Media Inquiries</h2>
+              <p style={{ fontSize: '1.125rem', marginBottom: '2rem', color: 'rgba(255,255,255,0.9)' }}>
+                For press inquiries, interviews, or media requests, please contact our PR team
+              </p>
+              <a
+                href="mailto:press@aimusicstudio.com"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                  padding: '1rem 2rem',
+                  background: 'white',
+                  color: '#3b82f6',
+                  fontWeight: 600,
+                  borderRadius: '0.75rem',
+                  textDecoration: 'none',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.1)'
+                }}
+              >
+                <Mail style={{ width: '1.25rem', height: '1.25rem' }} />
+                press@aimusicstudio.com
+              </a>
+            </div>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
