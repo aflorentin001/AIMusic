@@ -1,30 +1,59 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Play, Music, Sparkles } from 'lucide-react';
+import { Play, Pause, Music, Sparkles } from 'lucide-react';
+import { useState, useRef } from 'react';
 
 const sampleTracks = [
   {
-    title: 'Upbeat Corporate',
-    genre: 'Electronic',
-    duration: '2:34',
-    description: 'Perfect for presentations and promotional videos',
+    title: 'Skyline Dreams',
+    genre: 'Pop',
+    duration: '2:17',
+    description: 'An energetic and uplifting pop anthem',
+    audioUrl: '/songs/aintgonnalisten.mp3',
   },
   {
-    title: 'Chill Lo-Fi',
-    genre: 'Lo-Fi Hip Hop',
-    duration: '3:12',
-    description: 'Relaxing background music for study or work',
+    title: 'Midnight Lo-Fi',
+    genre: 'Lo-Fi',
+    duration: '2:27',
+    description: 'A relaxing beat for late-night focus',
+    audioUrl: '/songs/drummingboy.mp3',
   },
   {
-    title: 'Epic Cinematic',
-    genre: 'Orchestral',
-    duration: '2:58',
-    description: 'Dramatic and powerful for impactful content',
+    title: 'Cinematic Victory',
+    genre: 'Cinematic',
+    duration: '2:00',
+    description: 'A dramatic and epic orchestral score',
+    audioUrl: '/songs/myboy.mp3',
   },
 ];
 
 export default function Demo() {
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+  const audioRefs = useRef<(HTMLAudioElement | null)[]>([]);
+
+  const togglePlay = (index: number) => {
+    const audio = audioRefs.current[index];
+    if (!audio) return;
+
+    // Pause all other tracks
+    audioRefs.current.forEach((a, i) => {
+      if (a && i !== index) {
+        a.pause();
+        a.currentTime = 0;
+      }
+    });
+
+    // Toggle current track
+    if (playingIndex === index) {
+      audio.pause();
+      setPlayingIndex(null);
+    } else {
+      audio.play();
+      setPlayingIndex(index);
+    }
+  };
+
   return (
     <section className="flex items-center justify-center" style={{ paddingTop: '6rem', paddingBottom: '6rem', background: 'linear-gradient(to bottom, #95c9de, #aec8d8)' }}>
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
@@ -38,10 +67,10 @@ export default function Demo() {
           style={{ marginBottom: '4rem' }}
         >
           <h2 className="font-bold text-gray-900 text-center" style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', marginBottom: '1rem' }}>
-            Hear the Difference
+            Hear the AI magic in action
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-center" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)' }}>
-            Listen to sample tracks created with AI Music Studio
+            Listen to tracks created by our AI in seconds. Each one is unique, professional-quality, and ready for commercial use.
           </p>
         </motion.div>
 
@@ -71,8 +100,12 @@ export default function Demo() {
           </motion.div>
 
           {/* Sample Tracks */}
-          <div className="w-full max-w-4xl" style={{ marginBottom: '3rem', gap: '1rem', display: 'flex', flexDirection: 'column' }}>
-            {sampleTracks.map((track, index) => (
+          <div className="w-full max-w-4xl" style={{ marginBottom: '3rem' }}>
+            <p className="text-sm font-medium text-gray-700 mb-4 text-center">
+              Sample AI-Generated Tracks
+            </p>
+            <div style={{ gap: '1rem', display: 'flex', flexDirection: 'column' }}>
+              {sampleTracks.map((track, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, x: -20 }}
@@ -82,13 +115,28 @@ export default function Demo() {
                 whileHover={{ x: 4, transition: { duration: 0.2 } }}
                 className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex items-center gap-6 hover:shadow-md hover:border-gray-300 transition-all duration-300"
               >
+                {/* Hidden Audio Element */}
+                <audio
+                  ref={(el) => {
+                    audioRefs.current[index] = el;
+                  }}
+                  src={track.audioUrl}
+                  onEnded={() => setPlayingIndex(null)}
+                />
+
                 {/* Play Button */}
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
+                  onClick={() => togglePlay(index)}
                   className="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center shadow-lg hover:shadow-xl transition-shadow"
+                  aria-label={playingIndex === index ? `Pause ${track.title}` : `Play ${track.title}`}
                 >
-                  <Play className="w-6 h-6 text-white ml-0.5" />
+                  {playingIndex === index ? (
+                    <Pause className="w-6 h-6 text-white" />
+                  ) : (
+                    <Play className="w-6 h-6 text-white ml-0.5" />
+                  )}
                 </motion.button>
 
                 {/* Track Info */}
@@ -120,6 +168,7 @@ export default function Demo() {
                 </div>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* CTA */}
