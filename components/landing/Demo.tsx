@@ -67,7 +67,7 @@ export default function Demo({ onSignInClick }: DemoProps = {}) {
   };
 
   return (
-    <section className="flex items-center justify-center" style={{ paddingTop: '6rem', paddingBottom: '6rem', background: 'linear-gradient(to bottom, #95c9de, #aec8d8)' }}>
+    <section id="samples" className="flex items-center justify-center" style={{ paddingTop: '6rem', paddingBottom: '6rem', background: 'linear-gradient(to bottom, #95c9de, #aec8d8)' }}>
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
         {/* Section Header */}
         <motion.div
