@@ -58,9 +58,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-gray-200" style={{ background: 'linear-gradient(to bottom, #e8cec7, #ffd5c2, #ffddc0)' }}>
+    <footer style={{ background: '#1f2937', color: 'white' }}>
       {/* Newsletter Section */}
-      <div className="border-b border-gray-200 flex items-center justify-center">
+      <div className="border-b border-gray-700 flex items-center justify-center">
         <div className="w-full max-w-4xl mx-auto px-6 md:px-12 lg:px-16" style={{ paddingTop: '5rem', paddingBottom: '5rem' }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,10 +69,10 @@ export default function Footer() {
             transition={{ duration: 0.6 }}
             className="w-full text-center flex flex-col items-center"
           >
-            <h3 className="font-bold text-gray-900 mb-4" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
+            <h3 className="font-bold text-white mb-4" style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)' }}>
               Stay Updated with AI Music Studio
             </h3>
-            <p className="text-gray-600 mb-8" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)' }}>
+            <p className="text-gray-300 mb-8" style={{ fontSize: 'clamp(0.9375rem, 1.5vw, 1rem)' }}>
               Get the latest updates, tips, and exclusive offers delivered to your inbox
             </p>
             <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xl mx-auto">
@@ -135,9 +135,9 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
                 <Music2 className="w-6 h-6 text-white" />
               </div>
-              <span className="text-xl font-bold text-gray-900">AI Music Studio</span>
+              <span className="text-xl font-bold text-white">AI Music Studio</span>
             </div>
-            <p className="text-gray-600 leading-relaxed text-sm" style={{ marginBottom: '2rem' }}>
+            <p className="text-gray-300 leading-relaxed text-sm" style={{ marginBottom: '2rem' }}>
               Create professional music with AI in seconds. Perfect for content creators, businesses, and musicians.
             </p>
             {/* Social Links */}
@@ -151,24 +151,24 @@ export default function Footer() {
                     aria-label={social.label}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 text-gray-600"
+                    className="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all duration-300 text-gray-300"
                   >
                     <Icon className="w-5 h-5" />
                   </motion.a>
                 );
               })}
             </div>
-          </div>
+            </div>
 
           {/* Links Columns */}
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4 text-sm">Product</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">Product</h4>
             <ul className="space-y-2.5">
               {footerLinks.product.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
                   >
                     {link.name}
                   </a>
@@ -178,13 +178,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4 text-sm">Company</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">Company</h4>
             <ul className="space-y-2.5">
               {footerLinks.company.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
                   >
                     {link.name}
                   </a>
@@ -194,13 +194,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4 text-sm">Resources</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">Resources</h4>
             <ul className="space-y-2.5">
               {footerLinks.resources.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
                   >
                     {link.name}
                   </a>
@@ -210,13 +210,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-gray-900 font-semibold mb-4 text-sm">Legal</h4>
+            <h4 className="text-white font-semibold mb-4 text-sm">Legal</h4>
             <ul className="space-y-2.5">
               {footerLinks.legal.map((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
-                    className="text-gray-600 hover:text-blue-600 transition-colors text-sm"
+                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
                   >
                     {link.name}
                   </a>
@@ -226,22 +226,13 @@ export default function Footer() {
           </div>
         </div>
 
-          {/* Bottom Bar */}
-          <div className="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
-            <p className="text-gray-500 text-xs flex items-center">
-              © {new Date().getFullYear()} AI Music Studio. All rights reserved.
-            </p>
-            <div className="flex gap-6 text-xs items-center">
-              <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors">
-                Status
-              </a>
-              <a href="#" className="text-gray-500 hover:text-blue-600 transition-colors">
-                Contact
-              </a>
-              <a href="mailto:support@aimusicstudio.com" className="text-gray-500 hover:text-blue-600 transition-colors">
-                support@aimusicstudio.com
-              </a>
-            </div>
+        {/* Bottom Bar */}
+        <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-400 text-sm">© 2024 AI Music Studio. All rights reserved.</p>
+          <div className="flex gap-6 text-sm">
+            <a href="/privacy" className="text-gray-400 hover:text-blue-400 transition-colors">Privacy</a>
+            <a href="/terms" className="text-gray-400 hover:text-blue-400 transition-colors">Terms</a>
+            <a href="/cookies" className="text-gray-400 hover:text-blue-400 transition-colors">Cookies</a>
           </div>
         </div>
       </div>
