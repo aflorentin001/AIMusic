@@ -862,7 +862,10 @@ export default function GenerateMusic() {
                             background: 'rgba(255, 255, 255, 0.6)',
                             borderRadius: '2px',
                             transition: 'height 0.1s ease',
-                            animation: isPlaying ? `wave 0.${Math.floor(Math.random() * 5) + 3}s ease-in-out infinite` : 'none',
+                            animationName: isPlaying ? 'wave' : 'none',
+                            animationDuration: isPlaying ? `0.${Math.floor(Math.random() * 5) + 3}s` : '0s',
+                            animationTimingFunction: 'ease-in-out',
+                            animationIterationCount: 'infinite',
                             animationDelay: `${i * 0.05}s`
                           }}
                         />
