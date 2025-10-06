@@ -6,170 +6,206 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-blue-50 to-purple-50">
-      {/* Header */}
-      <header className="border-b bg-white/80 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <Link href="/" className="flex items-center gap-2">
-            <Music2 className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold">AI Music Studio</span>
-          </Link>
-          <Link href="/" className="text-blue-600 hover:text-blue-700 font-medium">
-            ← Back to Home
-          </Link>
-        </div>
-      </header>
+    <>
+      <style jsx global>{`
+        body {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          min-height: 100vh;
+        }
+      `}</style>
 
-      {/* Hero Section */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-          >
-            About AI Music Studio
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl text-gray-600 leading-relaxed"
-          >
-            We're on a mission to democratize music creation through AI, making professional-quality music accessible to everyone.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Mission & Vision */}
-      <section className="py-16 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
-          >
-            <Target className="w-12 h-12 text-blue-600 mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Our Mission</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To empower creators worldwide with AI-powered music generation tools that are intuitive, affordable, and produce professional-quality results. We believe everyone should have access to great music for their projects.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-white rounded-2xl p-8 shadow-lg"
-          >
-            <Zap className="w-12 h-12 text-purple-600 mb-4" />
-            <h2 className="text-3xl font-bold mb-4">Our Vision</h2>
-            <p className="text-gray-600 leading-relaxed">
-              To become the world's leading AI music platform, fostering a global community of creators who push the boundaries of what's possible with AI-generated music.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-16 px-6 bg-gradient-to-r from-blue-600 to-purple-600">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white">
-            <div>
-              <div className="text-5xl font-bold mb-2">50K+</div>
-              <div className="text-blue-100">Active Creators</div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold mb-2">2M+</div>
-              <div className="text-blue-100">Songs Generated</div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold mb-2">150+</div>
-              <div className="text-blue-100">Countries</div>
-            </div>
-            <div>
-              <div className="text-5xl font-bold mb-2">99.9%</div>
-              <div className="text-blue-100">Uptime</div>
-            </div>
+      <div style={{ 
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        minHeight: '100vh'
+      }}>
+        {/* Header */}
+        <header style={{
+          background: 'rgba(255, 255, 255, 0.8)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.2)',
+          padding: '1rem 1.5rem',
+          position: 'sticky',
+          top: 0,
+          zIndex: 50
+        }}>
+          <div style={{
+            maxWidth: '80rem',
+            margin: '0 auto',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between'
+          }}>
+            <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none' }}>
+              <Music2 style={{ width: '2rem', height: '2rem', color: '#3b82f6' }} />
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#111827' }}>AI Music Studio</span>
+            </Link>
+            <Link href="/" style={{ 
+              color: '#3b82f6', 
+              fontWeight: 500,
+              textDecoration: 'none'
+            }}>
+              ← Back to Home
+            </Link>
           </div>
-        </div>
-      </section>
+        </header>
 
-      {/* Values */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-12">Our Values</h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              { icon: Heart, title: 'Creator-First', description: 'We build for creators, listening to their needs and feedback.' },
-              { icon: Award, title: 'Quality', description: 'We never compromise on the quality of our AI-generated music.' },
-              { icon: Users, title: 'Community', description: 'We foster a supportive community of creators helping each other.' },
-            ].map((value, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-shadow"
-              >
-                <value.icon className="w-10 h-10 text-blue-600 mb-4" />
-                <h3 className="text-xl font-bold mb-2">{value.title}</h3>
-                <p className="text-gray-600">{value.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* Content */}
+        <main style={{
+          maxWidth: '80rem',
+          margin: '0 auto',
+          padding: '2rem 1.5rem'
+        }}>
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(10px)',
+            borderRadius: '1.5rem',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+            padding: '3rem'
+          }}>
+            <h1 style={{
+              fontSize: '2.5rem',
+              fontWeight: 700,
+              marginBottom: '1rem',
+              color: '#111827',
+              textAlign: 'center'
+            }}>
+              About AI Music Studio
+            </h1>
+            <p style={{
+              fontSize: '1.25rem',
+              color: '#6b7280',
+              textAlign: 'center',
+              marginBottom: '3rem'
+            }}>
+              We're on a mission to democratize music creation through AI, making professional-quality music accessible to everyone.
+            </p>
 
-      {/* Team Section */}
-      <section className="py-20 px-6 bg-gray-50">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-4">Our Team</h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            A diverse team of AI researchers, musicians, and engineers passionate about making music creation accessible to all.
-          </p>
-          <div className="grid md:grid-cols-4 gap-8">
-            {[
-              { name: 'Sarah Chen', role: 'CEO & Co-Founder', initial: 'SC' },
-              { name: 'Marcus Rodriguez', role: 'CTO & Co-Founder', initial: 'MR' },
-              { name: 'Emily Watson', role: 'Head of AI Research', initial: 'EW' },
-              { name: 'James Park', role: 'Head of Product', initial: 'JP' },
-            ].map((member, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
-              >
-                <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white text-3xl font-bold">
-                  {member.initial}
+            {/* Mission & Vision */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+              <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+                <Target style={{ width: '3rem', height: '3rem', color: '#3b82f6', marginBottom: '1rem' }} />
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>Our Mission</h2>
+                <p style={{ color: '#6b7280', lineHeight: 1.6 }}>
+                  To empower creators worldwide with AI-powered music generation tools that are intuitive, affordable, and produce professional-quality results.
+                </p>
+              </div>
+
+              <div style={{ background: '#f9fafb', borderRadius: '1rem', padding: '2rem', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
+                <Zap style={{ width: '3rem', height: '3rem', color: '#9333ea', marginBottom: '1rem' }} />
+                <h2 style={{ fontSize: '1.5rem', fontWeight: 700, marginBottom: '1rem' }}>Our Vision</h2>
+                <p style={{ color: '#6b7280', lineHeight: 1.6 }}>
+                  To become the world's leading AI music platform, fostering a global community of creators who push the boundaries.
+                </p>
+              </div>
+            </div>
+
+            {/* Stats */}
+            <div style={{ 
+              background: 'linear-gradient(135deg, #3b82f6, #9333ea)', 
+              borderRadius: '1rem', 
+              padding: '3rem 2rem',
+              marginBottom: '3rem'
+            }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '2rem', textAlign: 'center', color: 'white' }}>
+                <div>
+                  <div style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '0.5rem' }}>50K+</div>
+                  <div style={{ color: 'rgba(255,255,255,0.8)' }}>Active Creators</div>
                 </div>
-                <h3 className="font-bold text-lg">{member.name}</h3>
-                <p className="text-gray-600 text-sm">{member.role}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+                <div>
+                  <div style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '0.5rem' }}>2M+</div>
+                  <div style={{ color: 'rgba(255,255,255,0.8)' }}>Songs Generated</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '0.5rem' }}>150+</div>
+                  <div style={{ color: 'rgba(255,255,255,0.8)' }}>Countries</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '3rem', fontWeight: 700, marginBottom: '0.5rem' }}>99.9%</div>
+                  <div style={{ color: 'rgba(255,255,255,0.8)' }}>Uptime</div>
+                </div>
+              </div>
+            </div>
 
-      {/* CTA */}
-      <section className="py-20 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Join Our Journey</h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Be part of the AI music revolution. Start creating today.
-          </p>
-          <Link href="/signup">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:shadow-xl transition-all">
-              Get Started Free
-            </button>
-          </Link>
-        </div>
-      </section>
-    </div>
+            {/* Values */}
+            <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '2rem' }}>Our Values</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem', marginBottom: '3rem' }}>
+              {[
+                { icon: Heart, title: 'Creator-First', description: 'We build for creators, listening to their needs and feedback.' },
+                { icon: Award, title: 'Quality', description: 'We never compromise on the quality of our AI-generated music.' },
+                { icon: Users, title: 'Community', description: 'We foster a supportive community of creators helping each other.' },
+              ].map((value, index) => {
+                const Icon = value.icon;
+                return (
+                  <div key={index} style={{ background: '#f9fafb', borderRadius: '0.75rem', padding: '1.5rem' }}>
+                    <Icon style={{ width: '2.5rem', height: '2.5rem', color: '#3b82f6', marginBottom: '1rem' }} />
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.5rem' }}>{value.title}</h3>
+                    <p style={{ color: '#6b7280', fontSize: '0.9375rem' }}>{value.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Team */}
+            <h2 style={{ fontSize: '2rem', fontWeight: 700, textAlign: 'center', marginBottom: '1rem' }}>Our Team</h2>
+            <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '2rem' }}>
+              A diverse team of AI researchers, musicians, and engineers passionate about making music creation accessible to all.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', marginBottom: '3rem' }}>
+              {[
+                { name: 'Sarah Chen', role: 'CEO & Co-Founder', initial: 'SC' },
+                { name: 'Marcus Rodriguez', role: 'CTO & Co-Founder', initial: 'MR' },
+                { name: 'Emily Watson', role: 'Head of AI Research', initial: 'EW' },
+                { name: 'James Park', role: 'Head of Product', initial: 'JP' },
+              ].map((member, index) => (
+                <div key={index} style={{ textAlign: 'center' }}>
+                  <div style={{
+                    width: '8rem',
+                    height: '8rem',
+                    margin: '0 auto 1rem',
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #3b82f6, #9333ea)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                    fontSize: '2rem',
+                    fontWeight: 700
+                  }}>
+                    {member.initial}
+                  </div>
+                  <h3 style={{ fontWeight: 700, fontSize: '1.125rem', marginBottom: '0.25rem' }}>{member.name}</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.875rem' }}>{member.role}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <div style={{ textAlign: 'center', marginTop: '3rem' }}>
+              <h2 style={{ fontSize: '2rem', fontWeight: 700, marginBottom: '1rem' }}>Join Our Journey</h2>
+              <p style={{ fontSize: '1.125rem', color: '#6b7280', marginBottom: '2rem' }}>
+                Be part of the AI music revolution. Start creating today.
+              </p>
+              <Link href="/signup">
+                <button style={{
+                  padding: '1rem 2rem',
+                  background: 'linear-gradient(135deg, #3b82f6, #9333ea)',
+                  color: 'white',
+                  fontWeight: 600,
+                  borderRadius: '0.75rem',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontSize: '1rem',
+                  boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                  transition: 'all 0.2s'
+                }}>
+                  Get Started Free
+                </button>
+              </Link>
+            </div>
+          </div>
+        </main>
+      </div>
+    </>
   );
 }
