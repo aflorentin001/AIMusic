@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Music2, ChevronDown, Search, HelpCircle } from 'lucide-react';
+import { Music2, ChevronDown, Search, HelpCircle, Mail } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -79,7 +79,7 @@ const faqs = [
     questions: [
       {
         q: 'How do I cancel my subscription?',
-        a: 'Go to Profile > Settings > Billing and click "Cancel Subscription". You\'ll retain access until the end of your billing period.',
+        a: 'Go to Profile > Settings > Billing and click "Cancel Subscription". You will retain access until the end of your billing period.',
       },
       {
         q: 'What payment methods do you accept?',
