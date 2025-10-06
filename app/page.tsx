@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import SignInModal from '../components/auth/SignInModal';
+import Demo from '../components/landing/Demo';
 
 export default function Home() {
   const [isSignInOpen, setIsSignInOpen] = useState(false);
@@ -1052,68 +1053,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="samples" className="samples">
-        <div className="container">
-          <h2 className="section-title">Hear the AI magic in action</h2>
-          <p className="section-subtitle">Listen to tracks created by our AI in seconds. Each one is unique, professional-quality, and ready for commercial use.</p>
-          
-          <h3 className="subsection-title">Sample AI-Generated Tracks</h3>
-          <div className="samples-grid">
-            <div className="sample-card">
-              <div className="sample-header">
-                <div className="sample-info">
-                  <h3>Skyline Dreams</h3>
-                  <div className="sample-meta">Pop • 2:17</div>
-                </div>
-                <button className="play-button">▶</button>
-              </div>
-              <p className="sample-description">An energetic and uplifting pop anthem.</p>
-              <div className="waveform"></div>
-              <div className="sample-controls">
-                <span className="volume-icon">🔊</span>
-                <div className="progress-bar"></div>
-                <span className="download-icon">⬇</span>
-              </div>
-            </div>
-            <div className="sample-card">
-              <div className="sample-header">
-                <div className="sample-info">
-                  <h3>Midnight Lo-Fi</h3>
-                  <div className="sample-meta">Lo-Fi • 2:27</div>
-                </div>
-                <button className="play-button">▶</button>
-              </div>
-              <p className="sample-description">A relaxing beat for late-night focus.</p>
-              <div className="waveform"></div>
-              <div className="sample-controls">
-                <span className="volume-icon">🔊</span>
-                <div className="progress-bar"></div>
-                <span className="download-icon">⬇</span>
-              </div>
-            </div>
-            <div className="sample-card">
-              <div className="sample-header">
-                <div className="sample-info">
-                  <h3>Cinematic Victory</h3>
-                  <div className="sample-meta">Cinematic • 2:00</div>
-                </div>
-                <button className="play-button">▶</button>
-              </div>
-              <p className="sample-description">A dramatic and epic orchestral score.</p>
-              <div className="waveform"></div>
-              <div className="sample-controls">
-                <span className="volume-icon">🔊</span>
-                <div className="progress-bar"></div>
-                <span className="download-icon">⬇</span>
-              </div>
-            </div>
-          </div>
-          <div className="sample-actions">
-            <button onClick={() => setIsSignInOpen(true)} className="btn btn-primary">Try it Yourself</button>
-            <a href="#" className="btn btn-secondary">View All Samples</a>
-          </div>
-        </div>
-      </section>
+      {/* Demo Section with Working Audio */}
+      <Demo />
 
       {/* Pricing Section */}
       <section id="pricing" className="pricing">
