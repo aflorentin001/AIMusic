@@ -7,9 +7,9 @@ import { useState, useRef } from 'react';
 const sampleTracks = [
   {
     title: "Ain't Gonna Listen",
-    genre: 'Jazz',
+    genre: 'Rock',
     duration: '2:40',
-    description: 'A smooth jazz track with soulful melodies',
+    description: 'A powerful rock track with driving energy',
     audioUrl: '/songs/aintgonnalisten.mp3',
   },
   {
