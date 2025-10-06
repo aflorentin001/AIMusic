@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Play, Pause, Music, Sparkles } from 'lucide-react';
 import { useState, useRef } from 'react';
+import Link from 'next/link';
 
 const sampleTracks = [
   {
@@ -13,18 +14,18 @@ const sampleTracks = [
     audioUrl: '/songs/aintgonnalisten.mp3',
   },
   {
-    title: 'Drumming Boy',
-    genre: 'Rock',
-    duration: '3:05',
-    description: 'An energetic rock anthem with powerful drums',
-    audioUrl: '/songs/drummingboy.mp3',
-  },
-  {
     title: 'My Boy',
     genre: 'Pop',
     duration: '2:45',
     description: 'A catchy pop track with uplifting vibes',
     audioUrl: '/songs/myboy.mp3',
+  },
+  {
+    title: 'Drumming Boy',
+    genre: 'Rock',
+    duration: '3:05',
+    description: 'An energetic rock anthem with powerful drums',
+    audioUrl: '/songs/drummingboy.mp3',
   },
 ];
 
@@ -187,10 +188,12 @@ export default function Demo() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-center flex flex-col items-center w-full max-w-4xl"
           >
-            <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-medium rounded-lg hover:bg-blue-700 transition-colors">
-              <Sparkles className="w-5 h-5" />
-              Try It Yourself - Free
-            </button>
+            <Link href="/signup">
+              <button className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white text-base font-medium rounded-lg hover:bg-blue-700 transition-colors">
+                <Sparkles className="w-5 h-5" />
+                Try It Yourself - Free
+              </button>
+            </Link>
             <p className="text-sm text-gray-600 mt-6">
               No credit card required • Start creating in seconds
             </p>
