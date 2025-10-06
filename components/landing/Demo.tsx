@@ -6,24 +6,24 @@ import { useState, useRef } from 'react';
 
 const sampleTracks = [
   {
-    title: 'Skyline Dreams',
-    genre: 'Pop',
-    duration: '2:17',
-    description: 'An energetic and uplifting pop anthem',
+    title: "Ain't Gonna Listen",
+    genre: 'Jazz',
+    duration: '2:40',
+    description: 'A smooth jazz track with soulful melodies',
     audioUrl: '/songs/aintgonnalisten.mp3',
   },
   {
-    title: 'Midnight Lo-Fi',
-    genre: 'Lo-Fi',
-    duration: '2:27',
-    description: 'A relaxing beat for late-night focus',
+    title: 'Drumming Boy',
+    genre: 'Rock',
+    duration: '3:05',
+    description: 'An energetic rock anthem with powerful drums',
     audioUrl: '/songs/drummingboy.mp3',
   },
   {
-    title: 'Cinematic Victory',
-    genre: 'Cinematic',
-    duration: '2:00',
-    description: 'A dramatic and epic orchestral score',
+    title: 'My Boy',
+    genre: 'Pop',
+    duration: '2:45',
+    description: 'A catchy pop track with uplifting vibes',
     audioUrl: '/songs/myboy.mp3',
   },
 ];
